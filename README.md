@@ -1,0 +1,2 @@
+scout-sdk-extension-example
+===========================
