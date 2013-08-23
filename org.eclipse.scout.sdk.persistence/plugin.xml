@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.scout.sdk.runtimeBundles">
+      <bundle
+            order="200"
+            symbolicName="org.eclipse.scout.rt.persistence"
+            type="PERSISTENCE">
+      </bundle>
+   </extension>
+   <extension
+         point="org.eclipse.scout.sdk.ui.scoutBundle">
+      <bundleNode
+            bundleName="persistence"
+            bundleNewHandler="org.eclipse.scout.sdk.persistence.extension.PersistenceScoutBundleExtension"
+            bundlePage="org.eclipse.scout.sdk.persistence.page.PersistenceBundleNodePage"
+            bundleType="PERSISTENCE"
+            icon="resources/icons/emoticon_smile.png"
+            id="org.eclipse.scout.sdk.persistence.BundleId"
+            orderNumber="800">
+      </bundleNode>
+   </extension>
+   <extension
+         point="org.eclipse.scout.sdk.newProjectOperation">
+      <operation
+            class="org.eclipse.scout.sdk.persistence.operation.CreatePersistenceBundleOperation"
+            execAfterReference="true"
+            id="create.persistence"
+            referenceId="create.server">
+      </operation>
+      <operation
+            class="org.eclipse.scout.sdk.persistence.operation.FillPersistencePluginOperation"
+            execAfterReference="true"
+            id="fill.persistence"
+            referenceId="create.persistence">
+      </operation>
+   </extension>
+   <extension
+         point="org.eclipse.scout.sdk.ui.explorerPage">
+      <page
+            page="org.eclipse.scout.sdk.persistence.page.WhatEverTablePage"
+            parentPageId="org.eclipse.scout.sdk.page.persistence">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.scout.sdk.ui.contextMenu">
+      <contextMenu
+            class="org.eclipse.scout.sdk.persistence.action.WhatEverAction">
+      </contextMenu>
+   </extension>
+
+</plugin>
